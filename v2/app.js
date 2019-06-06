@@ -3,11 +3,11 @@ const loader = document.getElementById('loader')
 const optionsDiv = document.getElementById('options')
 const languagesDiv = document.getElementById('languages')
 
-// Time to guess the answer in seconds
-const waitingTime = 2
+// Time to guess the answer in milliseconds
+const waitingTime = 2000
 
 // how many possible answers
-const optionsCount = 4
+const optionsCount = 5
 
 // click does not work on ios
 const clickOrTouch = navigator.userAgent.match(/iPhone|iPad/i) ? 'touchstart' : 'click'
@@ -26,7 +26,7 @@ function init() {
     if (e.target.nodeName !== 'BUTTON') return
     resolve(e.target)
     clearTimeout(flagTimeout)
-    flagTimeout = setTimeout(newFlag, waitingTime * 1000)
+    flagTimeout = setTimeout(newFlag, waitingTime)
   })
 
   languagesDiv.addEventListener(clickOrTouch, e => {
@@ -37,10 +37,10 @@ function init() {
       flag.style.display = 'block'
       options.style.display = 'flex'
     })
-    goFullScreen()
     languagesDiv.style.display = 'none'
     loader.style.display = 'block'
   })
+
   loader.style.display = 'none'
   languagesDiv.style.display = 'flex'
 }
@@ -64,9 +64,14 @@ function showOptions(options, solution) {
 
 function getRandomCountries(data, count) {
   const countries = []
+  const indices = []
+  let index
   for (let i = 0; i < count; i++) {
-    const index = Math.floor(Math.random() * data.length)
-    countries.push(data[index])
+    index = Math.floor(Math.random() * data.length)
+    if (!indices.includes(index)) {
+      indices.push(index)
+      countries.push(data[index])
+    } else count++
   }
   return countries
 }
@@ -81,12 +86,4 @@ function showFlag(src) {
 function resolve(clicked) {
   document.querySelector('.solution').style.border = '5px solid #4ca64c'
   if (clicked.className !== 'solution') clicked.style.border = '5px solid #a64c4c'
-}
-
-function goFullScreen() {
-  var doc = window.document
-  var docEl = doc.documentElement
-  var requestFullScreen =
-    docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen
-  requestFullScreen.call(docEl)
 }
