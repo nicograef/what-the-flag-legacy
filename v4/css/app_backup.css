@@ -1,20 +1,41 @@
 :root {
   --color-primary: #208eaa;
+  --color-primary-dark: #104755;
   --color-wrong: #ff3b30;
   --color-right: #3fc555;
   --padding-main: 10px;
+  --app-bar-height: 56px;
+  --app-bar-bg: rgb(247, 247, 248);
+  --app-bar-padding: 30px;
+  --app-bar-shadow: 0 2px 4px -4px black, 0 2px 8px -8px black;
+  --font: Roboto, system-ui, Noto, Helvetica, Arial, sans-serif;
 }
 
 body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif !important;
+  font-family: var(--font) !important;
+}
+
+.app-bar {
+  height: var(--app-bar-height);
+  background: var(--app-bar-bg);
+  -webkit-box-shadow: var(--app-bar-shadow);
+  -moz-box-shadow: var(--app-bar-shadow);
+  box-shadow: var(--app-bar-shadow);
+}
+
+.app-bar-title {
+  padding: 0 var(--app-bar-padding);
+  margin: 0;
+  color: black;
+  font-size: 20px;
 }
 
 .content {
-  height: calc(100% - var(--padding-main) * 2);
-  max-height: calc(100% - var(--padding-main) * 2);
+  height: calc(100% - var(--padding-main) * 2 - var(--app-bar-height));
+  max-height: calc(100% - var(--padding-main) * 2 - var(--app-bar-height));
   max-width: 600px;
   margin: 0 auto;
   padding: var(--padding-main);
@@ -25,6 +46,7 @@ body {
   justify-content: center;
   align-items: center;
   align-content: start;
+  font-family: var(--font) !important;
 }
 
 img {
@@ -67,6 +89,7 @@ button {
   color: white;
   font-weight: 700;
   font-size: 1rem;
+  font-family: var(--font) !important;
   border-radius: 2px;
   outline: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);

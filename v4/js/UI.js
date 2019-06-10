@@ -5,9 +5,6 @@ class UI {
     this.capital = document.getElementById('capital')
     this.options = document.getElementById('options')
     this.question = document.getElementById('question')
-    this.languages = document.getElementById('languages')
-    this.games = document.getElementById('games')
-    this.loader = document.getElementById('loader')
   }
 
   showLanguageMenu() {
@@ -27,18 +24,18 @@ class UI {
 
   showGame() {
     this.clearUI()
-    if (STATE.gameMode.includes('flag-to')) this.flag.style.display = 'block'
-    else if (STATE.gameMode.includes('country-to')) this.country.style.display = 'block'
-    else if (STATE.gameMode.includes('capital-to')) this.capital.style.display = 'block'
-    this.question.style.display = 'block'
+    if (app.data.gameMode.includes('flag-to')) this.flag.style.display = 'block'
+    else if (app.data.gameMode.includes('country-to')) this.country.style.display = 'block'
+    else if (app.data.gameMode.includes('capital-to')) this.capital.style.display = 'block'
     this.options.style.display = 'flex'
   }
 
   setQuestion(country) {
+    this.showGame()
     return new Promise((resolve, reject) => {
       this.flag.onload = () => resolve()
       this.flag.src = country.flag
-      this.country.textContent = country.name[STATE.language]
+      this.country.textContent = country.name[app.data.language]
       this.capital.textContent = country.capital
     })
   }
@@ -47,28 +44,30 @@ class UI {
     this.options.innerHTML = ''
     options.forEach(option => {
       const btn = document.createElement('button')
+      btn.className = 'button button-large button-raised button-fill'
       if (option.name === solution.name) btn.classList.add('solution')
-      if (STATE.gameMode.includes('to-flag')) btn.style.background = `center / cover no-repeat url(${option.flag})`
-      else if (STATE.gameMode.includes('to-country')) btn.textContent = option.name[STATE.language]
-      else if (STATE.gameMode.includes('to-capital')) btn.textContent = option.capital
+      if (app.data.gameMode.includes('to-country')) btn.textContent = option.name[app.data.language]
+      else if (app.data.gameMode.includes('to-capital')) btn.textContent = option.capital
+      else if (app.data.gameMode.includes('to-flag'))
+        btn.style.background = `center / cover no-repeat url(${option.flag})`
 
       this.options.appendChild(btn)
     })
   }
 
   showSolution(clicked) {
-    if (clicked.className !== 'solution') clicked.classList.add('wrong')
-    document.querySelector('.solution').classList.add('right')
+    if (clicked.className !== 'solution') {
+      clicked.classList.add('color-red')
+      clicked.classList.add('border-color-red')
+    }
+    document.querySelector('.solution').classList.add('color-green')
+    document.querySelector('.solution').classList.add('border-color-green')
   }
 
   clearUI() {
-    this.loader.style.display = 'none'
-    this.languages.style.display = 'none'
-    this.games.style.display = 'none'
     this.flag.style.display = 'none'
     this.country.style.display = 'none'
     this.capital.style.display = 'none'
-    this.question.style.display = 'none'
     this.options.style.display = 'none'
   }
 }

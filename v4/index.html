@@ -13,52 +13,116 @@
     <meta http-equiv="“Pragma”" content="”no-cache”" />
     <meta http-equiv="“Expires”" content="”-1″" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <link rel="manifest" href="manifest.json" />
-    <link rel="shortcut icon" href="launcher-icon-4x.png" />
-    <title>What The Flag</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="app.css?v=3.0" />
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3" />
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="shortcut icon" href="icon.png" />
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="css/framework7.bundle.min.css" />
+    <link rel="stylesheet" href="css/app.css?v=4.0" />
+
+    <title>What The Flag</title>
   </head>
   <body>
-    <div class="content">
-      <div id="loader" class="lds-grid">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <!-- App root element -->
+    <div id="app">
+      <!-- Statusbar overlay -->
+      <div class="statusbar"></div>
+
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name -->
+        <div data-name="home" class="page">
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">What The Flag</div>
+            </div>
+          </div>
+
+          <div class="page-content">
+            <div class="list">
+              <ul>
+                <li>
+                  <a href="#" id="languages" class="item-link smart-select smart-select-init">
+                    <select name="languages">
+                      <option value="en" selected>English</option>
+                      <option value="de">Deutsch</option>
+                      <option value="es">Español</option>
+                      <option value="fr">Français</option>
+                      <option value="it">Italian</option>
+                      <option value="nl">Nederlands</option>
+                      <option value="ja">日本語</option>
+                    </select>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Language</div>
+                        <div class="item-after">English</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <br />
+              <ul>
+                <li>
+                  <a href="#" id="games" class="item-link smart-select smart-select-init">
+                    <select name="games">
+                      <option value="mixed" selected>Mixed</option>
+                      <option value="flag-to-country">Flag to Country</option>
+                      <option value="flag-to-capital">Flag to Capital</option>
+                      <option value="country-to-flag">Country to Flag</option>
+                      <option value="country-to-capital">Country to Capital</option>
+                      <option value="capital-to-flag">Capital to Flag</option>
+                      <option value="capital-to-country">Capital to Country</option>
+                    </select>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Game Mode</div>
+                        <div class="item-after">Flag to Country</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <br />
+              <ul>
+                <li>
+                  <a href="#" id="regions" class="item-link smart-select smart-select-init">
+                    <select name="regions">
+                      <option value="world" selected>World</option>
+                      <option value="europe">Europe</option>
+                      <option value="asia">Asia</option>
+                      <option value="africa">Africa</option>
+                      <option value="americas">America (North &amp; South)</option>
+                      <option value="oceania">Oceania</option>
+                    </select>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Region</div>
+                        <div class="item-after">World</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <div class="block">
+                <p class="row">
+                  <!-- <button class="col button button-large button-fill">Play</button> -->
+                  <button id="play" class="button button-large button-raised button-fill">Play!</button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="languages" class="full-flex" style="display: none">
-        <button id="en">English</button>
-        <button id="de">Deutsch</button>
-        <button id="es">Español</button>
-        <button id="fr">Français</button>
-        <button id="it">Italian</button>
-        <button id="nl">Nederlands</button>
-        <button id="ja">日本語</button>
-      </div>
-      <div id="games" class="full-flex" style="display: none">
-        <button id="flag-to-country">Flag to Country</button>
-        <button id="flag-to-capital">Flag to Capital</button>
-        <button id="country-to-flag">Country to Flag</button>
-        <button id="country-to-capital">Country to Capital</button>
-        <button id="capital-to-flag">Capital to Flag</button>
-        <button id="capital-to-country">Capital to Country</button>
-      </div>
-      <div id="question" class="full-flex" style="display: none">
-        <h1 id="country" style="display: none"></h1>
-        <h1 id="capital" style="display: none"></h1>
-        <img id="flag" style="display: none" />
-      </div>
-      <div id="options" class="full-flex" style="display: none"></div>
     </div>
 
-    <script src="UI.js?v=1.0"></script>
-    <script src="app.js?v=3.0"></script>
+    <script src="js/framework7.bundle.min.js"></script>
+    <script src="js/UI.js?v=4.0"></script>
+    <script src="js/app.js?v=4.0"></script>
   </body>
 </html>
