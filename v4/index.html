@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="“Pragma”" content="”no-cache”" />
+    <meta http-equiv="“Expires”" content="”-1″" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="shortcut icon" href="launcher-icon-4x.png" />
+    <title>What The Flag</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="app.css?v=3.0" />
+  </head>
+  <body>
+    <div class="content">
+      <div id="loader" class="lds-grid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div id="languages" class="full-flex" style="display: none">
+        <button id="en">English</button>
+        <button id="de">Deutsch</button>
+        <button id="es">Español</button>
+        <button id="fr">Français</button>
+        <button id="it">Italian</button>
+        <button id="nl">Nederlands</button>
+        <button id="ja">日本語</button>
+      </div>
+      <div id="games" class="full-flex" style="display: none">
+        <button id="flag-to-country">Flag to Country</button>
+        <button id="flag-to-capital">Flag to Capital</button>
+        <button id="country-to-flag">Country to Flag</button>
+        <button id="country-to-capital">Country to Capital</button>
+        <button id="capital-to-flag">Capital to Flag</button>
+        <button id="capital-to-country">Capital to Country</button>
+      </div>
+      <div id="question" class="full-flex" style="display: none">
+        <h1 id="country" style="display: none"></h1>
+        <h1 id="capital" style="display: none"></h1>
+        <img id="flag" style="display: none" />
+      </div>
+      <div id="options" class="full-flex" style="display: none"></div>
+    </div>
+
+    <script src="UI.js?v=1.0"></script>
+    <script src="app.js?v=3.0"></script>
+  </body>
+</html>
