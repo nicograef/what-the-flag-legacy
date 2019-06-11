@@ -26,3 +26,14 @@ img {
 #options button.border-color-green {
   border: 10px solid;
 }
+
+.navbar .title {
+  line-height: 2;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
