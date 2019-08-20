@@ -1,4 +1,4 @@
-# What The Flag
+# Country Quiz
 
 A simple country flag quiz. Available in 7 languages.
 
